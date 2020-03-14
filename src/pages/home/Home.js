@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {UserList} from "./UserList";
-import {getAllUsers} from "../../shared/actions/get-all-users";
+import {userAction} from "../../shared/actions/user-action";
 
 export const Home= () => {
 
@@ -11,7 +11,7 @@ export const Home= () => {
 
 
 	const effects = () => {
-		dispatch(getAllUsers())
+		dispatch(userAction())
 	};
 
 	const inputs = [];

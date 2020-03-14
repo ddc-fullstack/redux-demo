@@ -1,7 +1,7 @@
 import {useSelector, useDispatch} from "react-redux";
 import React, {useEffect} from 'react';
-import {getUserPosts} from "../../shared/actions/get-user-posts";
-import {getUserByUserId} from "../../shared/actions/get-all-users";
+import {getUserPosts} from "../../shared/actions/userPosts-action";
+import {getUserByUserId} from "../../shared/actions/user-action";
 import { PostCard } from '../../shared/PostCard'
 
 export const UserPosts = ({match}) => {
