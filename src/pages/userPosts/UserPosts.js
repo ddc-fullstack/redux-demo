@@ -2,7 +2,7 @@ import {useSelector, useDispatch} from "react-redux";
 import React, {useEffect} from 'react';
 import {getUserPosts} from "../../shared/actions/get-user-posts";
 import {getUserByUserId} from "../../shared/actions/get-all-users";
-import { PostCard } from '../posts/PostCard'
+import { PostCard } from '../../shared/PostCard'
 
 export const UserPosts = ({match}) => {
 
@@ -18,7 +18,8 @@ export const UserPosts = ({match}) => {
 	useEffect(sideEffects, sideEffectInputs);
 
 	const posts = useSelector(state => (
-		state.posts ? state.posts : []
+
+		state.posts ? state.posts.filter(post => post.postUserId === match.params.userId) : []
 	));
 	const user = useSelector(state => (
 		state.users ? state.users[0] : null

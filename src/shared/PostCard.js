@@ -5,7 +5,7 @@ export const PostCard = ({ post }) => {
 
   const users = useSelector((state) => state.users ? state.users : null)
 
-  const findUsername = () => {
+  const FindUsername = () => {
     const user = users.find(user => post.postUserId === user.userId)
     return (
       <>
@@ -23,7 +23,7 @@ export const PostCard = ({ post }) => {
           <small className="text-muted">{post.username}</small>
         </p>
         <div className="card-footer text-muted text-center">
-          {findUsername()}
+         <FindUsername />
         </div>
       </div>
     </div>

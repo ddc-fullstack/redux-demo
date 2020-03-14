@@ -9,6 +9,7 @@ export const getAllPosts = () => async dispatch => {
 
 export const getUserPosts = (userId) => async dispatch => {
 	const {data} = await httpConfig(`/apis/users/?postUserId=${userId}`);
+
 	dispatch({type: "GET_USER_POSTS", payload: data})
 };
 
@@ -19,7 +20,7 @@ export const getPostsAndUsers = () => async (dispatch, getState) => {
 	//commented out lines below are equivalent to the _ chain method
 
 
-	const userIds = _.uniq(_.map(getState().posts, "userId"));
+	const userIds = _.uniq(_.map(getState().posts, "postUserId"));
 	userIds.forEach(id => dispatch(getUserByUserId(id)));
 
 	// _.chain(getState().posts)

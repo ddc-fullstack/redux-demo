@@ -1,12 +1,13 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {getPostsAndUsers} from "../../shared/actions/get-user-posts";
-import {PostCard} from "./PostCard";
+import {PostCard} from "../../shared/PostCard";
 
 export const Posts = () => {
 
 	const dispatch = useDispatch();
-	const posts = useSelector(state => (state.posts ? state.posts : []));
+
+	console.log(dispatch)
 
 	const effects = () => {
 		dispatch(getPostsAndUsers());
@@ -15,6 +16,9 @@ export const Posts = () => {
 	const inputs = [];
 
 	useEffect(effects, inputs);
+
+	const posts = useSelector(state => (state.posts ? state.posts : []));
+
 
 
 	return (
