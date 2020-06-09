@@ -1,6 +1,7 @@
-import {httpConfig} from "../misc/http-config";
+
 import _ from "lodash";
 import {getUserByUserId} from "./user-action";
+import { httpConfig } from '../../utils/http-config'
 
 export const getAllPosts = () => async dispatch => {
 	const {data} = await httpConfig(`/apis/users/?posts=true`);

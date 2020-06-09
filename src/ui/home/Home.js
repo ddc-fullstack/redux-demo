@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {UserListItem} from "./UserListItem";
-import {getAllUsers} from "../../shared/actions/user-action";
+import { getAllUsers } from '../../store/actions/user-action'
+
 
 
 

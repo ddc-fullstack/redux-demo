@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './index.css'
-import { reducers } from "./shared/reducers";
+import { reducers } from "./store/reducers";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { FourOhFour } from "./pages/four-oh-four/FourOhFour";
-import { Home } from "./pages/home/Home";
-import { UserPosts } from "./pages/userPosts/UserPosts";
-import { Posts } from "./pages/posts/Posts";
+import { FourOhFour } from "./ui/four-oh-four/FourOhFour";
+import { Home } from "./ui/home/Home";
+import { UserPosts } from "./ui/userPosts/UserPosts";
+import { Posts } from "./ui/posts/Posts";
 import { configureStore } from '@reduxjs/toolkit'
 
 //In order to use redux a store must be initialized and passed to the Provider component.
