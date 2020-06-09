@@ -8,7 +8,7 @@ export const getAllPosts = () => async dispatch => {
 	dispatch({type: "GET_ALL_POSTS", payload: data})
 };
 
-export const getUserPosts = (userId) => async dispatch => {
+export const getPostsByPostUserId = (userId) => async dispatch => {
 	const {data} = await httpConfig(`/apis/users/?postUserId=${userId}`);
 
 	dispatch({type: "GET_USER_POSTS", payload: data})

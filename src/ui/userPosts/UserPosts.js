@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from 'react';
-import { getUserPosts } from '../../store/actions/userPosts-action'
+import { getPostsByPostUserId } from '../../store/actions/post-action'
 import { getUserByUserId } from '../../store/actions/user-action'
 import { PostCard } from '../shared/PostCard'
 
@@ -12,7 +12,7 @@ export const UserPosts = ({match}) => {
 
   const sideEffects = () => {
     // The dispatch function takes actions as arguments to make changes to the store/redux.
-    dispatch(getUserPosts(match.params.userId));
+    dispatch(getPostsByPostUserId(match.params.userId));
     dispatch(getUserByUserId(match.params.userId));
 
   };

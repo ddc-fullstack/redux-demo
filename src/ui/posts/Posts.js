@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
-import { getPostsAndUsers } from '../../store/actions/userPosts-action'
+import { getPostsAndUsers } from '../../store/actions/post-action'
 import { PostCard } from '../shared/PostCard'
 
 
