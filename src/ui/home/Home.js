@@ -1,15 +1,14 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {UserListItem} from "./UserListItem";
-import { getAllUsers } from '../../store/actions/user-action'
-
-
-
+import {fetchAllUsers} from '../../store/users'
 
 export const Home = () => {
 
 	// returns the users store from Redux and assigns it to the users variable
 	const users = useSelector(state => state.users ? state.users : []);
+
+	console.log(users)
 
 	// assigns useDispatch reference to the dispatch variable for later use.
 	const dispatch = useDispatch();
@@ -20,7 +19,7 @@ export const Home = () => {
 	// E.G code that handles dispatches to redux, API requests, or timers.
 	function sideEffects() {
 		// The dispatch function takes actions as arguments to make changes to the store/redux.
-		dispatch(getAllUsers())
+		dispatch(fetchAllUsers())
 	}
 
 

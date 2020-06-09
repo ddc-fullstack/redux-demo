@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './index.css'
-import { reducers } from "./store/reducers";
+import { reducers } from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { FourOhFour } from "./ui/four-oh-four/FourOhFour";
