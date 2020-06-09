@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
-import { getPostsAndUsers } from '../../store/actions/userPosts-action'
 import { PostCard } from '../shared/PostCard'
+import { fetchAllPostsAndUsers } from '../../store/posts'
 
 
 export const Posts = () => {
@@ -11,7 +11,7 @@ export const Posts = () => {
 	console.log(dispatch)
 
 	const effects = () => {
-		dispatch(getPostsAndUsers());
+		dispatch(fetchAllPostsAndUsers());
 	};
 
 	const inputs = [];

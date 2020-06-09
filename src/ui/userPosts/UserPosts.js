@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from 'react';
-import { getUserByUserId } from '../../store/actions/user-action'
 import { PostCard } from '../shared/PostCard'
 import {fetchPostsByPostUserId} from '../../store/posts'
 import { fetchUserByUserId } from '../../store/users'

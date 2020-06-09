@@ -1,12 +1,13 @@
-import {createSlice} from '@reduxjs/toolkit'
+import _ from "lodash";
+import { createSlice } from '@reduxjs/toolkit'
 import { httpConfig } from '../utils/http-config'
-
+import { fetchUserByUserId } from './users'
 
 const slice = createSlice({
   name: "posts",
   initialState: [],
   reducers: {
-    getAllPosts:(posts, action) => {
+    getAllPosts: (posts, action) => {
       return action.payload
     },
     getPostsByPostUserId: (posts, action) => {
@@ -22,10 +23,16 @@ export const fetchAllPosts = () => async dispatch => {
   dispatch(getAllPosts(data))
 }
 
-export const fetchPostsByPostUserId = (id) =>  async dispatch =>{
+export const fetchPostsByPostUserId = (id) => async dispatch => {
   const {data} = await httpConfig(`/apis/users/?postUserId=${id}`);
   dispatch(getPostsByPostUserId(data))
 }
 
-export default slice.reducer
+export const fetchAllPostsAndUsers = () => async (dispatch, getState) => {
+  await dispatch(fetchAllPosts())
+  const userIds = _.uniq(_.map(getState().posts, "postUserId"));
+  userIds.forEach(id => dispatch(fetchUserByUserId(id)));
 
+}
+
+export default slice.reducer
