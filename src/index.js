@@ -11,9 +11,11 @@ import { Home } from "./ui/home/Home";
 import { UserPosts } from "./ui/userPosts/UserPosts";
 import { Posts } from "./ui/posts/Posts";
 import { configureStore } from '@reduxjs/toolkit'
+import { applyMiddleware, createStore } from 'redux'
+import thunk from 'redux-thunk'
 
 //In order to use redux a store must be initialized and passed to the Provider component.
-const store = configureStore({reducer: reducers});
+const store = createStore(reducers, applyMiddleware(thunk));
 
 // Routing allows for react to have routed pages.
 const Routing = (store) => (
