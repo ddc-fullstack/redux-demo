@@ -1,10 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {UserListItem} from "./UserListItem";
-import { getAllUsers } from '../../store/actions/user-action'
-
-
-
+import {fetchAllUsers} from '../../store/users'
 
 export const Home = () => {
 
@@ -14,15 +11,12 @@ export const Home = () => {
 	// assigns useDispatch reference to the dispatch variable for later use.
 	const dispatch = useDispatch();
 
-
-
 // Define the side effects that will occur in the application.
 	// E.G code that handles dispatches to redux, API requests, or timers.
 	function sideEffects() {
 		// The dispatch function takes actions as arguments to make changes to the store/redux.
-		dispatch(getAllUsers())
+		dispatch(fetchAllUsers())
 	}
-
 
 	// Declare any inputs that will be used by functions that are declared in sideEffects.
 	const sideEffectInputs = [];
