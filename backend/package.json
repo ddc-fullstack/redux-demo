@@ -1,5 +1,5 @@
 {
-  "name": "ddcpassport",
+  "name": "redux-demo-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -42,7 +42,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "ts-node": "^9.0.0",
-    "uuid": "^3.4.0"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/csurf": "^1.9.36",
@@ -55,7 +55,7 @@
     "@types/nodemailer": "^6.4.0",
     "@types/passport": "^1.0.2",
     "@types/passport-local": "^1.0.33",
-    "@types/uuid": "^3.4.7",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
     "mysql2": "^2.2.5",
