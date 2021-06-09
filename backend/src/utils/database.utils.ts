@@ -1,11 +1,12 @@
-import {createPool,  PoolConnection} from 'mysql2/promise';
-require('dotenv').config();
+import {createPool, Pool} from 'mysql2/promise';
 
-// Database connection. Can use config from .env file (based on example.env) or the defaults
+let globalPool: Pool | undefined = undefined
 
-export async function connect (): Promise<PoolConnection> {
-
-  const connection = await createPool({
+export async function connect () : Promise<Pool> {
+  if (globalPool){
+    return globalPool
+  }
+  globalPool = await createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
@@ -13,7 +14,5 @@ export async function connect (): Promise<PoolConnection> {
     connectionLimit: 10,
     namedPlaceholders: true
   });
-  return connection.getConnection()
-
-
+  return globalPool
 }
