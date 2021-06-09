@@ -1,9 +1,10 @@
-const proxy = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
-	app.use(proxy('/apis', {
+	app.use(createProxyMiddleware('/apis', {
 		logLevel: 'debug',
-		target: 'localhost:8080',
+		//Change this to your backend, e.g. http://123.432.653.21:8080
+		target: "http://localhost:8080",
 		changeOrigin: true,
 		secure: true,
 	}));

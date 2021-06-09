@@ -18,15 +18,12 @@ export const Home = () => {
 		dispatch(fetchAllUsers())
 	}
 
-	// Declare any inputs that will be used by functions that are declared in sideEffects.
-	const sideEffectInputs = [];
-
 	/**
 	 * Pass both sideEffects and sideEffectInputs to useEffect.
 	* useEffect is what handles rerendering of components when sideEffects resolve.
 	* E.g when a network request to an api has completed and there is new data to display on the dom.
 	*/
-	useEffect(sideEffects, sideEffectInputs);
+	useEffect(sideEffects, [dispatch]);
 
 	return (
 		<main className="container">

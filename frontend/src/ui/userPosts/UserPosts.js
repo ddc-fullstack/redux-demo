@@ -17,15 +17,12 @@ export const UserPosts = ({match}) => {
 
   };
 
-  // Declare any inputs that will be used by functions that are declared in sideEffects.
-  const sideEffectInputs = [match.params.userId];
-
   /**
    * Pass both sideEffects and sideEffectInputs to useEffect.
    * useEffect is what handles rerendering of components when sideEffects resolve.
    * E.g when a network request to an api has completed and there is new data to display on the dom.
    **/
-  useEffect(sideEffects, sideEffectInputs);
+  useEffect(sideEffects,  [match.params.userId, dispatch]);
 
   const posts = useSelector(state => (
     state.posts

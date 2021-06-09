@@ -14,9 +14,7 @@ export const Posts = () => {
 		dispatch(fetchAllPostsAndUsers());
 	};
 
-	const inputs = [];
-
-	useEffect(effects, inputs);
+	useEffect(effects, [dispatch]);
 
 	const posts = useSelector(state => (state.posts ? state.posts : []));
 

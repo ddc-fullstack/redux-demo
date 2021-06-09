@@ -2,6 +2,8 @@ import express, { Application } from 'express'
 import morgan from 'morgan'
 // Routes
 import { indexRoute } from './apis/index.route'
+import {postRouter} from './apis/post/post.route';
+import {userRouter} from './apis/user/user.route';
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -31,6 +33,8 @@ export class App {
   private routes () {
     // TODO add "/apis"
     this.app.use('/apis', indexRoute)
+    this.app.use('/apis/posts', postRouter)
+    this.app.use('/apis/users', userRouter)
   }
 
   // starts the server and tells the terminal to post a message that the server is running and on what port
