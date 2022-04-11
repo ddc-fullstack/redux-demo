@@ -8,7 +8,6 @@ export const Posts = () => {
 
 	const dispatch = useDispatch();
 
-	console.log(dispatch)
 
 	const effects = () => {
 		dispatch(fetchAllPostsAndUsers());
@@ -17,8 +16,6 @@ export const Posts = () => {
 	useEffect(effects, [dispatch]);
 
 	const posts = useSelector(state => (state.posts ? state.posts : []));
-
-
 
 	return (
 		<>

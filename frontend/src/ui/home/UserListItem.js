@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router';
 
-const UserListComponent = (props) => {
+export const UserListItem = (props) => {
 	const {user} = props;
 
 	// This component takes advantage of the render prop pattern https://css-tricks.com/an-overview-of-render-props-in-react/.
@@ -25,5 +25,3 @@ const UserListComponent = (props) => {
 		</>
 	)
 };
-
-export const UserListItem = (UserListComponent);

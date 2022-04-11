@@ -3,16 +3,10 @@ import { useSelector } from 'react-redux'
 
 export const PostCard = ({ post }) => {
 
-  const users = useSelector((state) => state.users ? state.users : null)
-
-  const FindUsername = () => {
-    const user = users.find(user => post.postUserId === user.userId)
-    return (
-      <>
-        {user && <h3>{user.username}</h3>}
-      </>
-    )
-  }
+  const user = useSelector((state) => state.users
+      ? state.users.find(user => post.postUserId === user.userId)
+      : null
+  )
 
   return (
     <div className="card text-white bg-dark mb-3">
@@ -23,7 +17,7 @@ export const PostCard = ({ post }) => {
           <small className="text-muted">{post.username}</small>
         </p>
         <div className="card-footer text-muted text-center">
-         <FindUsername />
+          {user && <h3>{user.username}</h3>}
         </div>
       </div>
     </div>
