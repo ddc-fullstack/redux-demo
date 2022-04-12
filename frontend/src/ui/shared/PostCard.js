@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Col, Card } from 'react-bootstrap'
 
 export const PostCard = ({ post }) => {
 
@@ -9,17 +10,19 @@ export const PostCard = ({ post }) => {
   )
 
   return (
-    <div className="card text-white bg-dark mb-3">
-      <div className="card-body">
-        <h5 className="card-title">{post.title}</h5>
-        <p className="card-text">{post.body}</p>
-        <p className="card-text">
-          <small className="text-muted">{post.username}</small>
-        </p>
-        <div className="card-footer text-muted text-center">
-          {user && <h3>{user.username}</h3>}
+    <Col>
+    <Card className="text-white h-100 text-center bg-dark">
+      <Card.Title className='pt-2'>{post.title}</Card.Title>
+      <Card.Body className='d-flex align-items-center'>
+
+        <div>
+        <Card.Text>{post.body}</Card.Text>
         </div>
-      </div>
-    </div>
+      </Card.Body>
+      <Card.Footer className="text-muted ">
+        {user && <h3 className='h5'>{user.username}</h3>}
+      </Card.Footer>
+    </Card>
+    </Col>
   )
 }

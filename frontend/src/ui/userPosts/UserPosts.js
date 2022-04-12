@@ -3,30 +3,34 @@ import React, { useEffect } from 'react';
 import { PostCard } from '../shared/PostCard'
 import {fetchPostsByPostUserId} from '../../store/posts'
 import { fetchUserByUserId } from '../../store/users'
+import {useParams} from 'react-router-dom'
+import { Col, Container, Row } from 'react-bootstrap'
 
+export const UserPosts = () => {
 
-export const UserPosts = ({match}) => {
-
-  // Returns the the userPosts store from redux and assigns it to the userPosts variable.
+  // Returns the userPosts store from redux and assigns it to the userPosts variable.
   const dispatch = useDispatch();
+
+  //grab the userId from the url
+  let { userId } = useParams();
 
   const sideEffects = () => {
     // The dispatch function takes actions as arguments to make changes to the store/redux.
-    dispatch(fetchPostsByPostUserId(match.params.userId));
-    dispatch(fetchUserByUserId(match.params.userId));
+    dispatch(fetchPostsByPostUserId(userId));
+    dispatch(fetchUserByUserId(userId));
 
   };
 
   /**
    * Pass both sideEffects and sideEffectInputs to useEffect.
-   * useEffect is what handles rerendering of components when sideEffects resolve.
+   * useEffect is what handles rendering of components when sideEffects resolve.
    * E.g when a network request to an api has completed and there is new data to display on the dom.
    **/
-  useEffect(sideEffects,  [match.params.userId, dispatch]);
+  useEffect(sideEffects,  [userId, dispatch]);
 
   const posts = useSelector(state => (
     state.posts
-      ? state.posts.filter(post => post.postUserId === match.params.userId)
+      ? state.posts.filter(post => post.postUserId === userId)
       : []
   ));
   const user = useSelector(state => (
@@ -35,16 +39,21 @@ export const UserPosts = ({match}) => {
 	    : null
   ));
 
+
   return (
     <>
-      <main className="container">
-        {user && (<h2>{user.name}</h2>)}
-        <div className="card-group card-columns">
+      <Container>
+        <Row>
+          <Col>
+        {user && (<h2 className="text-center">{user.name}</h2>)}
+          </Col>
+        </Row>
+        <Row className=" row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           {
             posts.map(post => <PostCard key={post.postId} post={post}/>)
           }
-        </div>
-      </main>
+          </Row>
+        </Container>
     </>
   )
 };

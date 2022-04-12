@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {UserListItem} from "./UserListItem";
 import {fetchAllUsers} from '../../store/users'
+import { Col, Container, Row, Table } from 'react-bootstrap'
 
 export const Home = () => {
 
@@ -26,16 +27,24 @@ export const Home = () => {
 	useEffect(sideEffects, [dispatch]);
 
 	return (
-		<main className="container">
-			<table className="table table-responsive table-hover table-dark">
+		<>
+		<Container as={"main"}>
+			<Row className={"py-2"}>
+				<Col>
+					<h1 className="h2">Users</h1>
+				</Col>
+			</Row>
+			<Row className={"py-2"}>
+				<Col>
+			<Table striped bordered hover  responsive variant="dark" className="g-2 border-light">
 				<thead>
 					<tr>
-						<th><h4>User Id</h4></th>
-						<th><h4>Name</h4></th>
-						<th><h4>Email</h4></th>
-						<th><h4>Phone</h4></th>
-						<th><h4>Username</h4></th>
-						<th><h4>Website</h4></th>
+						<th className="h4">User Id</th>
+						<th className="h4">Name</th>
+						<th className="h4">Email</th>
+						<th className="h4">Phone</th>
+						<th className="h4">Username</th>
+						<th className="h4">Website</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -43,8 +52,11 @@ export const Home = () => {
 						users.map(user => <UserListItem key={user.userId} user={user} /> )
 					}
 				</tbody>
-			</table>
-		</main>
+			</Table>
+				</Col>
+			</Row>
+		</Container>
+		</>
 	)
 };
 
