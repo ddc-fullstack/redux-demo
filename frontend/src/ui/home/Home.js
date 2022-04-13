@@ -7,7 +7,16 @@ import { Col, Container, Row, Table } from 'react-bootstrap'
 export const Home = () => {
 
 	// returns the users store from Redux and assigns it to the users variable
-	const users = useSelector(state => state.users ? state.users : []);
+	const users = useSelector(state => {
+	if(state?.users.constructor.name === "Object"){
+		return Object.values(state.users)
+	} else {
+		return []
+	}
+
+
+	});
+	console.log(users)
 
 	// assigns useDispatch reference to the dispatch variable for later use.
 	const dispatch = useDispatch();

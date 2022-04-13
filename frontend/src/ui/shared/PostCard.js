@@ -3,10 +3,12 @@ import { useSelector } from 'react-redux'
 import { Col, Card } from 'react-bootstrap'
 
 export const PostCard = ({ post }) => {
+  const {postUserId} = post
 
-  const user = useSelector((state) => state.users
-      ? state.users.find(user => post.postUserId === user.userId)
-      : null
+  const user = useSelector((state) => state?.users[postUserId]
+    ? state?.users[postUserId]
+    : null
+
   )
 
   return (
