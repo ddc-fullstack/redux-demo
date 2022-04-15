@@ -3,8 +3,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {UserListItem} from "./UserListItem";
 import {fetchAllUsers} from '../../store/users'
 import { Col, Container, Row, Table } from 'react-bootstrap'
-
-export const Home = () => {
+export function Home() {
 
 	// returns the users store from Redux and assigns it to the users variable
 	const users = useSelector(state => {
@@ -33,7 +32,7 @@ export const Home = () => {
 	* useEffect is what handles rerendering of components when sideEffects resolve.
 	* E.g when a network request to an api has completed and there is new data to display on the dom.
 	*/
-	useEffect(sideEffects, [dispatch]);
+	useEffect(sideEffects, []);
 
 	return (
 		<>
@@ -68,6 +67,7 @@ export const Home = () => {
 		</>
 	)
 };
+
 
 
 

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from 'react';
 import { PostCard } from '../shared/PostCard'
 import {fetchPostsByPostUserId} from '../../store/posts'
-import { fetchUserByUserId } from '../../store/users'
+import { fetchUserByUserId, selectUserByUserId } from '../../store/users'
 import {useParams} from 'react-router-dom'
 import { Col, Container, Row } from 'react-bootstrap'
 
@@ -33,11 +33,7 @@ export const UserPosts = () => {
       ? state.posts.filter(post => post.postUserId === userId)
       : []
   ));
-  const user = useSelector(state => (
-    state.users
-	    ? state.users[0]
-	    : null
-  ));
+  const user = useSelector(selectUserByUserId(userId));
 
 
   return (

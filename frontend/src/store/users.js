@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSelector, createSlice } from '@reduxjs/toolkit'
 import { httpConfig } from '../utils/http-config'
 
 const slice = createSlice({
@@ -16,6 +16,7 @@ const slice = createSlice({
 
 export const { setInitialUsers, setUserByUserId } = slice.actions
 
+// redux thunks for grabbing data from RESTAPIs and adding that data to redux
 export const fetchAllUsers = () => async dispatch => {
 
   const { data } = await httpConfig(`/apis/users/`)
@@ -33,9 +34,22 @@ export const fetchAllUsers = () => async dispatch => {
   dispatch(setInitialUsers(userDictionary))
 }
 
-export const fetchUserByUserId = (id) => async dispatch => {
-  const { data } = await httpConfig(`/apis/users/${id}`)
-  dispatch(setUserByUserId({ id, data }))
+export const fetchUserByUserId = (id) => async (dispatch, getState) => {
+
+  const users = getState().users
+  console.log(users[id])
+  if (users[id] === undefined) {
+    console.log(users[id])
+    const { data } = await httpConfig(`/apis/users/${id}`)
+    dispatch(setUserByUserId({ id, data }))
+  }
 }
+
+export const selectUserByUserId = (id) =>
+  createSelector(
+    state => state?.users[id]
+    ? state?.users[id]
+    : null
+  )
 
 export default slice.reducer

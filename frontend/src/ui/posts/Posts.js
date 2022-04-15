@@ -5,14 +5,16 @@ import { fetchAllPostsAndUsers } from '../../store/posts'
 import { Col, Container, Row } from 'react-bootstrap'
 
 export const Posts = () => {
+  console.log("The component was called twice")
 
   const dispatch = useDispatch()
 
-  const effects = () => {
-    dispatch(fetchAllPostsAndUsers())
-  }
-
-  useEffect(effects, [dispatch])
+  useEffect(
+    () => {
+      dispatch(fetchAllPostsAndUsers())
+    },
+    []
+  )
 
   const posts = useSelector(state => (state.posts ? state.posts : []))
 
