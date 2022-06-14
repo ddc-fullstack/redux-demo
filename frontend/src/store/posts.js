@@ -25,7 +25,8 @@ export const fetchPostsByPostUserId = (id) => async dispatch => {
 }
 
 export const fetchAllPostsAndUsers = () => async (dispatch, getState) => {
-  await dispatch(setInitialPosts)
+  const {data} = await httpConfig(`/apis/posts`);
+  dispatch(setInitialPosts(data))
   const userIds = _.uniq(_.map(getState().posts, "postUserId"));
   userIds.forEach(id => dispatch(fetchUserByUserId(id)));
 
