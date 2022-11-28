@@ -5,7 +5,7 @@ import { fetchAllPostsAndUsers } from '../../store/posts'
 import { Col, Container, Row } from 'react-bootstrap'
 
 export const Posts = () => {
-  console.log("The component was called twice")
+  console.log('The component was called twice')
 
   const dispatch = useDispatch()
 
@@ -24,20 +24,15 @@ export const Posts = () => {
       <Container>
         <Row>
           <Col>
-            <h1 className="h2">All The Posts</h1>
+            <h1 className='h2'>All The Posts</h1>
           </Col>
         </Row>
-        <Row className=" row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <Row className=' row-cols-1 row-cols-md-2 row-cols-lg-3 g-4'>
           {
-            posts.map(post => <PostCard post={post} key={post.postId}/>)
+            posts.map(post => <PostCard post={post} key={post.postId} />)
           }
         </Row>
       </Container>
     </>
   )
-
 }
-
-
-
-

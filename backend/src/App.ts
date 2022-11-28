@@ -33,8 +33,8 @@ export class App {
   private routes () {
     // TODO add "/apis"
     this.app.use('/apis', indexRoute)
-    this.app.use('/apis/posts', postRouter)
-    this.app.use('/apis/users', userRouter)
+    this.app.use('/apis/post', postRouter)
+    this.app.use('/apis/user', userRouter)
   }
 
   // starts the server and tells the terminal to post a message that the server is running and on what port
@@ -43,3 +43,4 @@ export class App {
     console.log('Express application built successfully')
   }
 }
+

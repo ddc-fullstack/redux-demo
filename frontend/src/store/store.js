@@ -1,8 +1,13 @@
-import {combineReducers} from "redux"
-import users from "./users";
-import posts from "./posts"
-import {configureStore} from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
+import { setupListeners } from '@reduxjs/toolkit/query'
+import { userApi } from './users'
 
-const reducer = combineReducers({users, posts})
-//In order to use redux a store must be initialized and passed to the Provider component.
-export const store = configureStore({reducer})
+export const store = configureStore({
+  reducer: {
+    [userApi.reducerPath]: userApi.reducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(userApi.middleware)
+})
+
+setupListeners(store.dispatch)
